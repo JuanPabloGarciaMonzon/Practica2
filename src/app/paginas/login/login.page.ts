@@ -47,7 +47,7 @@ result_user : Observable<Usuarios>;
       this.result_user = this.serv.obtenerdatos_Usuarios_para_login(this.user);
       this.result_user.forEach(element => {
         for (let key in element) {
-          console.log(element[key].user_name);
+          console.log(element[key].EMAIL);
           
             if(element[key].password == this.password){
   
@@ -57,9 +57,9 @@ result_user : Observable<Usuarios>;
               }else{
   
                 this.error="";
-                //MUTZ reivsa aqui
+
                 console.log("------------ Entroooo")
-                this.navCtrl.navigateForward(["/crudusuarios",element[key].id,element[key].user_name,element[key].type]);
+                this.navCtrl.navigateForward(["/crudusuarios",element[key].id,element[key].EMAIL,element[key].TYPE]);
               return;
             }
   

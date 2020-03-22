@@ -15,25 +15,25 @@ export class CrudusuariosPage implements OnInit {
   public dataUsuarios : any;
   public data : Usuarios;
 
-  public codigoEmpleado : Number;
+  public codigoUsuario : Number;
   public tipo : String;
 
   public error : Boolean;
   public activo : Boolean;
-  id =null
-  user =null
-  type =null
+  public ID =null;
+  public EMAIL =null;
+  public TYPE =null;
   
   constructor(private apiService : ApiService,private activeRoute: ActivatedRoute, public navCtrl: NavController) { this.data = new Usuarios(); }
 
   ngOnInit() {
-    this.id=this.activeRoute.snapshot.paramMap.get('id');
-    this.user=this.activeRoute.snapshot.paramMap.get('user');
-    this.type=this.activeRoute.snapshot.paramMap.get('type');
-    if(this.type < 2){
+    this.ID=this.activeRoute.snapshot.paramMap.get('ID');
+    this.EMAIL=this.activeRoute.snapshot.paramMap.get('EMAIL');
+    this.TYPE=this.activeRoute.snapshot.paramMap.get('TYPE');
+    if(this.TYPE < 2){
 
     }
-    console.log(this.id,this.user,this.type);
+    console.log(this.ID,this.EMAIL,this.TYPE);
     this.loadUsuarios();
   }
   
@@ -46,14 +46,14 @@ export class CrudusuariosPage implements OnInit {
 
   getData(){
     //Cargar de la API la informacion de un usuario en particular
-    //this.popUpMensaje('Cargando Usuario: '+this.codigoEmpleado);
-    this.apiService.getItem(this.codigoEmpleado).subscribe( response => {
-      if(response.type != 0)
+    //this.popUpMensaje('Cargando Usuario: '+this.codigoUsuario);
+    this.apiService.getItem(this.codigoUsuario).subscribe( response => {
+      if(response.TYPE != 0)
         this.data = response;
-        if(response.active == 0)
+        /*if(response.active == 0)
           this.activo = false
         else
-          this.activo = true
+          this.activo = true*/
     });
   }
 
@@ -64,11 +64,10 @@ export class CrudusuariosPage implements OnInit {
     this.error = false;
     this.checkFields("");
     if(this.error == false){
-      this.data.active = 1;
-      if( this.tipo == "Empleado")
-        this.data.type = 2;
+      if( this.tipo == "Usuario")
+        this.data.TYPE = 2;
       if( this.tipo == "Administrador")
-        this.data.type = 1;
+        this.data.TYPE = 1;
       this.apiService.createItem(this.data).subscribe();
     }
   }
@@ -81,11 +80,11 @@ export class CrudusuariosPage implements OnInit {
 	    this.error = false;
     this.checkFields("");
     if(this.error == false){
-    if( this.tipo == "Empleado")
-      this.data.type = 2;
+    if( this.tipo == "Usuario")
+      this.data.TYPE = 2;
     if( this.tipo == "Administrador")
-      this.data.type = 1;
-    this.apiService.updateItem(this.data.id,this.data).subscribe();
+      this.data.TYPE = 1;
+    this.apiService.updateItem(this.data.ID,this.data).subscribe();
 	}
   }
 
@@ -93,8 +92,8 @@ export class CrudusuariosPage implements OnInit {
     //Dar de baja a usuario
     //Error si no se ha cargado uno
     this.popUpMensaje('Dando de Baja a Usuario');
-    this.data.active = 0;
-    this.apiService.updateItem(this.data.id,this.data).subscribe();
+    //this.data.active = 0;
+    this.apiService.updateItem(this.data.ID,this.data).subscribe();
 	
   }
 
@@ -102,50 +101,39 @@ export class CrudusuariosPage implements OnInit {
     //reactivar usuario
     //Error si no se ha cargado uno
     this.popUpMensaje('Reactivando Usuario');
-    this.data.active = 1;
-    this.apiService.updateItem(this.data.id,this.data).subscribe();
+    //this.data.active = 1;
+    this.apiService.updateItem(this.data.ID,this.data).subscribe();
 	
   }
 
   checkFields(mensajeDeError){
 	  
-    //Anidar en mensajeDeError, todos los campos vacios
-    if(!this.data.id || this.data.id.toString().length == 0 || this.data.id != 0){
+    //AnIDar en mensajeDeError, todos los campos vacios
+    if(!this.data.ID || this.data.ID.toString().length == 0 || this.data.ID != 0){
       mensajeDeError = mensajeDeError + "ID vacio o debe ser 0.<br>";
       this.error = true;
       this.popUpMensaje(mensajeDeError);
     }
 	
-	    if(!this.data.user_name || this.data.user_name.length == 0){
+	    if(!this.data.EMAIL || this.data.EMAIL.length == 0){
       mensajeDeError = mensajeDeError + "Nombre de Usuario vacio.<br>";
       this.error = true;
       this.popUpMensaje(mensajeDeError);
     }
+
 	
-		    if(!this.data.first_name||  this.data.first_name.length == 0){
-      mensajeDeError = mensajeDeError + "Primer Nombre vacio.<br>";
-      this.error = true;
-      this.popUpMensaje(mensajeDeError);
-    }
-	
-			    if(!this.data.last_name||  this.data.last_name.length == 0){
-      mensajeDeError = mensajeDeError + "Segundo Nombre vacio.<br>";
-      this.error = true;
-      this.popUpMensaje(mensajeDeError);
-    }
-	
-			    if(!this.data.e_mail||  this.data.e_mail.length == 0){
+			    if(!this.data.EMAIL||  this.data.EMAIL.length == 0){
       mensajeDeError = mensajeDeError + "Email vacio.<br>";
       this.error = true;
       this.popUpMensaje(mensajeDeError);
     }
 	
-			    if(!this.data.password||  this.data.password.length == 0){
-      mensajeDeError = mensajeDeError + "Password vacio.<br>" ; 
+			    if(!this.data.PASSWORD||  this.data.PASSWORD.length == 0){
+      mensajeDeError = mensajeDeError + "PASSWORD vacio.<br>" ; 
       this.error = true;
       this.popUpMensaje(mensajeDeError);
     }
-     if(!this.data.type||  this.data.type.toString().length == 0){
+     if(!this.data.TYPE||  this.data.TYPE.toString().length == 0){
       mensajeDeError = mensajeDeError + "Tipo vacio.<br>" ; 
       this.error = true;
       this.popUpMensaje(mensajeDeError);
@@ -162,7 +150,7 @@ export class CrudusuariosPage implements OnInit {
   }
 
   returnMenu(){
-    this.navCtrl.navigateForward(["/login",this.id,this.user,this.type]);
+    this.navCtrl.navigateForward(["/login",this.ID,this.EMAIL,this.TYPE]);
   }
 
 }

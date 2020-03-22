@@ -12,7 +12,7 @@ import { retry, catchError } from 'rxjs/operators';
 export class ApiService {
 
   //Path
-  base_path = 'http://3.20.104.181:8099/api/usuarios';
+  base_path = 'http://ec2-3-12-241-61.us-east-2.compute.amazonaws.com:8099/api/usuarios';
 
 
   constructor(private http: HttpClient) { }
