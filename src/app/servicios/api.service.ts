@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { Usuarios } from '../modelos/usuarios';
+import { Productos } from '../modelos/productos';
 import { Observable, throwError } from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
 
@@ -13,7 +14,7 @@ export class ApiService {
 
   //Path
   base_path = 'http://ec2-3-12-241-61.us-east-2.compute.amazonaws.com:8099/api/usuarios';
-
+  base_path2 = 'http://ec2-3-12-241-61.us-east-2.compute.amazonaws.com:7099/api/productos';
 
   constructor(private http: HttpClient) { }
 
@@ -62,6 +63,31 @@ export class ApiService {
     .pipe(/*retry(2),*/catchError(this.handleError)/**/)
   }
 
+
+
+  getAllproducts() : Observable<Productos>{
+    return this.http
+      .get<Productos>(this.base_path2)
+      .pipe(/*retry(2),*/catchError(this.handleError)/**/)
+  }
+
+  getproduct(itemID) : Observable<Productos>{
+    return this.http
+      .get<Productos>(this.base_path2 + "/" + itemID)
+      .pipe(/*retry(2),*/catchError(this.handleError)/**/)
+  }
+
+  createproduct(item): Observable<Productos>{
+    return this.http
+      .post<Productos>(this.base_path2, JSON.stringify(item), this.httpOptions)
+      .pipe(/*retry(2),*/catchError(this.handleError)/**/)
+  }
+
+  updateProduct(itemID, item) : Observable<Productos>{
+    return this.http
+      .put<Productos>(this.base_path2+"/"+itemID, JSON.stringify(item),this.httpOptions)
+      .pipe(/*retry(2),*/catchError(this.handleError)/**/)
+  }
 
 
 
