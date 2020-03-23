@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { ListadoInventarioComponent } from './paginas/listado-inventario/listado-inventario.component';
+import { ListadoUsuariosComponent } from './paginas/listado-usuarios/listado-usuarios.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -12,9 +14,14 @@ const routes: Routes = [
     path: 'crudusuarios/:id/:user/:type',
     loadChildren: () => import('./paginas/crudusuarios/crudusuarios.module').then( m => m.CrudusuariosPageModule)
   },
-
-
-  
+  {
+    path: 'products-list',
+    component: ListadoInventarioComponent
+  },
+  {
+    path: 'users-list',
+    component: ListadoUsuariosComponent
+  }
 
 ];
 
