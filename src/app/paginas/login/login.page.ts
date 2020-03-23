@@ -3,7 +3,7 @@ import { NavController} from '@ionic/angular';
 import {Usuarios} from '../../modelos/usuarios';
 import {EmpresaServicesService} from '../../servicios/empresa-services.service';
 import {Observable} from 'rxjs';
-import fetch from 'node-fetch';
+// import fetch from 'node-fetch';
 
 
 
