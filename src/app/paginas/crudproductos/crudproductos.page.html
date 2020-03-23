@@ -1,0 +1,44 @@
+
+<ion-header>
+  <ion-toolbar color="warning">
+    <ion-title class="titulo">Administracion de Productos</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content padding class="background">
+  <div class="centrado carta">
+    <ion-item>
+      <ion-label position="floating">Producto</ion-label>
+      <ion-select [(ngModel)]="ID">
+        <ion-select-option *ngFor="let codigoItem of dataProductos"> {{ codigoItem.ID }}</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-button color="warning" (click)="getData2()">Cargar Productos</ion-button>
+    <br>
+    <ion-item>
+      <ion-label position="floating">Codigo de Prodycto</ion-label>
+      <ion-input clear-input type="text" [(ngModel)]="data.ID"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Nombre de Producto</ion-label>
+      <ion-input clear-input type="text" [(ngModel)]="data.NAME"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Descripcion</ion-label>
+      <ion-input clear-input type="text" [(ngModel)]="data.DESCRIPTION"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Precio</ion-label>
+      <ion-input clear-input type="text" [(ngModel)]="data.PRICE"></ion-input>
+    </ion-item>
+
+    <ion-button color="warning" (click)="createproduct()">Crear Producto</ion-button>
+    <ion-button color="warning" (click)="modifyproducts()">Modificar Producto</ion-button>
+    <ion-button color="warning" (click)="deleteproduct()">Eliminar Producto</ion-button>
+    <br>
+    <ion-button color="warning" (click)="returnMenu()">Menu Principal</ion-button>
+    <br>
+  </div>
+</ion-content>
