@@ -1,0 +1,21 @@
+<h2 class="ml-3 mt-3">Listado de usuarios</h2>
+<div class="col-md-6 offset-md-3 mt-2">
+    <table class="table table-hover">
+        <thead class="bg-dark text-white">
+            <tr align="center">
+                <th  scope="col">#</th>
+                <th  scope="col">Nombre</th>
+                <th  scope="col">Contrasena</th>
+                <th  scope="col">Email</th>
+            </tr>    
+        </thead>
+        <tbody>
+            <tr *ngFor = "let user of users; let i = index">
+                <td align="center">{{i + 1}}</td>
+                <td align="center">{{user.NAME}}</td>
+                <td align="center">{{user.PASSWORD}}</td>
+                <td align="center">{{user.EMAIL}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
