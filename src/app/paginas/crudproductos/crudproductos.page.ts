@@ -6,31 +6,30 @@ import { ApiService } from '../../servicios/api.service';
 
 
 @Component({
-  selector: 'app-crudproductos',
-  templateUrl: './cruduproductos.page.html',
+  selector: 'app-crudusuarios',
+  templateUrl: './crudproductos.page.html',
   styleUrls: ['./crudproductos.page.scss'],
 })
 export class CrudproductosPage implements OnInit {
 
   public dataProductos : any;
-  public data : Productos;
+  public datap : Productos;
 
-  public codigoProducto : Number;
-  //public tipo : String;
 
   public error : Boolean;
-  //public activo : Boolean;
+
   public ID =null;
-  public NAME = null;
-  public DESCRIPTION = null;
-  public PRICE = null;
-  constructor(private apiService : ApiService,private activeRoute: ActivatedRoute, public navCtrl: NavController) { this.data = new Productos(); }
+  public NAME =null;
+  public DESCRIPTION =null;
+  public PRICE =null;
+  constructor(private apiService : ApiService,private activeRoute: ActivatedRoute, public navCtrl: NavController) { this.datap = new Productos(); }
 
   ngOnInit() {
-    this.ID = this.activeRoute.snapshot.paramMap.get('ID');
-    this.NAME = this.activeRoute.snapshot.paramMap.get('NAME');
+    this.ID=this.activeRoute.snapshot.paramMap.get('ID');
+    this.NAME=this.activeRoute.snapshot.paramMap.get('NAME');
     this.DESCRIPTION=this.activeRoute.snapshot.paramMap.get('DESCRIPTION');
-    this.PRICE = this.activeRoute.snapshot.paramMap.get('PRICE');
+    this.PRICE=this.activeRoute.snapshot.paramMap.get('PRICE');
+
 
     this.loadProductos();
   }
@@ -42,41 +41,39 @@ export class CrudproductosPage implements OnInit {
     })
   }
 
-  getData2(){
+  getData(){
 
 
-    this.apiService.getproduct(this.codigoProducto).subscribe( response => {
-
-        this.data = response;
-
-    });
   }
 
-  createproduct(){
+  createProducto(){
 
     this.popUpMensaje('Creando Producto');
     this.error = false;
     this.checkFields("");
     if(this.error == false){
-      this.apiService.createproduct(this.data).subscribe();
+
+      this.apiService.createItem(this.datap).subscribe();
     }
   }
 
-  modifyproducts(){
+  modifyProducto(){
+
 
     this.popUpMensaje('Modificando Producto');
-    this.error = false;
+	    this.error = false;
     this.checkFields("");
+    if(this.error == false){
 
-      this.apiService.updateProduct(this.data.ID,this.data).subscribe();
-
+    this.apiService.updateItem(this.datap.ID,this.datap).subscribe();
+	}
   }
 
-  deleteproduct(){
+  deleteProducto(){
 
-    this.popUpMensaje('Dando de Baja producto');
+    this.popUpMensaje('Eliminar producto');
 
-    this.apiService.updateProduct(this.data.ID,this.data).subscribe();
+    this.apiService.updateItem(this.datap.ID,this.datap).subscribe();
 
   }
 
@@ -84,27 +81,28 @@ export class CrudproductosPage implements OnInit {
 
   checkFields(mensajeDeError){
 
-    if(!this.data.ID || this.data.ID.toString().length == 0 || this.data.ID != 0){
-      mensajeDeError = mensajeDeError + "ID vacio.<br>";
+    //AnIDar en mensajeDeError, todos los campos vacios
+    if(!this.datap.ID || this.datap.ID.toString().length == 0 || this.datap.ID != 0){
+      mensajeDeError = mensajeDeError + "ID vacio o debe ser 0.<br>";
       this.error = true;
       this.popUpMensaje(mensajeDeError);
     }
 
-    if(!this.data.NAME || this.data.NAME.length == 0){
-      mensajeDeError = mensajeDeError + "Nombre de producto vacio.<br>";
+	    if(!this.datap.NAME || this.datap.NAME.length == 0){
+      mensajeDeError = mensajeDeError + "Nombre  vacio.<br>";
       this.error = true;
       this.popUpMensaje(mensajeDeError);
     }
 
 
-    if(!this.data.DESCRIPTION||  this.data.DESCRIPTION.length == 0){
-      mensajeDeError = mensajeDeError + "Descripcion Vacia.<br>";
+			    if(!this.datap.DESCRIPTION||  this.datap.DESCRIPTION.length == 0){
+      mensajeDeError = mensajeDeError + "DESCRIPCION vacia.<br>";
       this.error = true;
       this.popUpMensaje(mensajeDeError);
     }
 
-    if(!this.data.PRICE||  this.data.PRICE.length == 0){
-      mensajeDeError = mensajeDeError + "Precio vacio.<br>" ;
+			    if(!this.datap.PRICE||  this.datap.PRICE.length == 0){
+      mensajeDeError = mensajeDeError + "PRICE vacio.<br>" ;
       this.error = true;
       this.popUpMensaje(mensajeDeError);
     }
@@ -121,7 +119,7 @@ export class CrudproductosPage implements OnInit {
   }
 
   returnMenu(){
-    this.navCtrl.navigateForward(["/login",this.ID,this.NAME,this.PRICE]);
+    this.navCtrl.navigateForward(["/login"]);
   }
 
 }

@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { CrudproductosRoutingModule } from './crudproductos-routing.module';
+import { CrudproductosPageRoutingModule } from './crudproductos-routing.module';
 
 import { CrudproductosPage } from './crudproductos.page';
 
@@ -13,8 +13,8 @@ import { CrudproductosPage } from './crudproductos.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    CrudproductosRoutingModule,
+    CrudproductosPageRoutingModule,
   ],
   declarations: [CrudproductosPage]
 })
-export class CrudusuariosModule {}
+export class CrudproductosPageModule {}

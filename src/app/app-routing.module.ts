@@ -6,18 +6,20 @@ import { HomeComponent } from './paginas/home/home.component';
 import { AccesoComponent } from './paginas/acceso/acceso.component';
 import { AdminUsuariosComponent } from './paginas/admin-usuarios/admin-usuarios.component';
 import { AdminProductosComponent } from './paginas/admin-productos/admin-productos.component';
+import { CrudproductosPage} from "./paginas/crudproductos/crudproductos.page";
 
-const routes: Routes = [  
+const routes: Routes = [
   // {
   //   path: 'login',
   //   loadChildren: () => import('./paginas/login/login.module').then( m => m.LoginPageModule)
-  // },  
-  { path: 'acceso', component: AccesoComponent },  
+  // },
+  { path: 'acceso', component: AccesoComponent },
   { path: 'home/:tipo', component: HomeComponent },
   // {
   //   path: 'crudusuarios/:id/:user/:type',
   //   loadChildren: () => import('./paginas/crudusuarios/crudusuarios.module').then( m => m.CrudusuariosPageModule)
   // },
+  { path: 'crudproductos', component: CrudproductosPage},
   { path: 'admin-usuarios', component: AdminUsuariosComponent },
   { path: 'admin-productos/:id/:user/:type', component: AdminProductosComponent },
   { path: 'products-list', component: ListadoInventarioComponent },
