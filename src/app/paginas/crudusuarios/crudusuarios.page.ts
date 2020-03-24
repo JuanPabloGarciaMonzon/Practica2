@@ -25,15 +25,7 @@ export class CrudusuariosPage implements OnInit {
   public TYPE =null;
   
   constructor(private apiService : ApiService,private activeRoute: ActivatedRoute, public navCtrl: NavController) { this.data = new Usuarios(); }
-
   ngOnInit() {
-    this.ID=this.activeRoute.snapshot.paramMap.get('ID');
-    this.EMAIL=this.activeRoute.snapshot.paramMap.get('EMAIL');
-    this.TYPE=this.activeRoute.snapshot.paramMap.get('TYPE');
-    if(this.TYPE < 2){
-
-    }
-    console.log(this.ID,this.EMAIL,this.TYPE);
     this.loadUsuarios();
   }
   
@@ -147,10 +139,6 @@ export class CrudusuariosPage implements OnInit {
     loading.present();
     
     document.body.appendChild(loading);
-  }
-
-  returnMenu(){
-    this.navCtrl.navigateForward(["/login",this.ID,this.EMAIL,this.TYPE]);
   }
 
 }

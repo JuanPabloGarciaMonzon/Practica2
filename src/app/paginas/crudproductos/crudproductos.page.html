@@ -1,10 +1,35 @@
+<h1>Administracion de Producto</h1>
 
+<div padding class="background">
 
-<h2 class="ml-3 mt-3">Administracion de Producto</h2>
-<div class="col-md-6 offset-md-3 mt-2">
+  <div class="centrado carta">
+    <div>
+      <label position="floating">Producto</label>
+      <select [(ngModel)]="ID">
+        <option *ngFor="let codigoItem of dataProductos"> {{ codigoItem.ID }}</option>
+      </select>
+      <br> 
+      <button color="warning" (click)="getData()">Cargar Producto</button>
+    </div>
 
-    <tbody>
-    <br>
+    <div>
+      <label position="floating">Codigo de Producto</label>
+      <input clear-input type="text" [(ngModel)]="datap.ID">
+    </div>
+    <div>
+      <label position="floating">Nombre de producto</label>
+      <input clear-input type="text" [(ngModel)]="datap.NAME">
+    </div>
+
+    <div>
+      <label position="floating">Descripcion</label>
+      <input clear-input type="text" [(ngModel)]="datap.DESCRIPTION">
+    </div>
+    <div>
+      <label position="floating">Precio</label>
+      <input clear-input type="text" [(ngModel)]="datap.PRICE">
+    </div>
+
     <button color="warning" (click)="createProducto()">Crear producto</button>
     <br>
     <br>
@@ -16,6 +41,5 @@
     <br>
     <button color="warning" (click)="returnMenu()">Menu Principal</button>
     <br>
-    </tbody>
-
+  </div>
 </div>

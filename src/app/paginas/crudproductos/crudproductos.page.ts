@@ -17,6 +17,7 @@ export class CrudproductosPage implements OnInit {
 
 
   public error : Boolean;
+
   public aleatorio=null;
   public ID = null;
   public NAME = null ;
@@ -25,12 +26,11 @@ export class CrudproductosPage implements OnInit {
   constructor(private apiService : ApiService,private activeRoute: ActivatedRoute, public navCtrl: NavController) { this.datap = new Productos(); }
 
   ngOnInit() {
-    this.aleatorio = Math.round(Math.random()*10);
-
-    this.ID=this.ID+this.aleatorio+1;
-    this.NAME="producto"+this.ID;
-    this.DESCRIPTION="descripcion"+this.ID;
-    this.PRICE=this.ID*100;
+    // this.aleatorio = Math.round(Math.random()*10);
+    // this.ID=this.activeRoute.snapshot.paramMap.get('ID');
+    // this.NAME=this.activeRoute.snapshot.paramMap.get('NAME');
+    // this.DESCRIPTION=this.activeRoute.snapshot.paramMap.get('DESCRIPTION');
+    // this.PRICE=this.activeRoute.snapshot.paramMap.get('PRICE');
 
 
     this.loadProductos();

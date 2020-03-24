@@ -4,27 +4,18 @@ import { ListadoInventarioComponent } from './paginas/listado-inventario/listado
 import { ListadoUsuariosComponent } from './paginas/listado-usuarios/listado-usuarios.component';
 import { HomeComponent } from './paginas/home/home.component';
 import { AccesoComponent } from './paginas/acceso/acceso.component';
-import { AdminUsuariosComponent } from './paginas/admin-usuarios/admin-usuarios.component';
-import { AdminProductosComponent } from './paginas/admin-productos/admin-productos.component';
-import { CrudproductosPage} from "./paginas/crudproductos/crudproductos.page";
 
 const routes: Routes = [
-  // {
-  //   path: 'login',
-  //   loadChildren: () => import('./paginas/login/login.module').then( m => m.LoginPageModule)
-  // },
   { path: 'acceso', component: AccesoComponent },
   { path: 'home/:tipo', component: HomeComponent },
-  // {
-  //   path: 'crudusuarios/:id/:user/:type',
-  //   loadChildren: () => import('./paginas/crudusuarios/crudusuarios.module').then( m => m.CrudusuariosPageModule)
-  // },
-   {
-     path: 'crudproductos',
-     loadChildren: () => import('./paginas/crudproductos/crudproductos.module').then( m => m.CrudproductosPageModule)
-   },
-  { path: 'admin-usuarios', component: AdminUsuariosComponent },
-  { path: 'admin-productos/:id/:user/:type', component: AdminProductosComponent },
+  {
+    path: 'crudusuarios',
+    loadChildren: () => import('./paginas/crudusuarios/crudusuarios.module').then( m => m.CrudusuariosPageModule)
+  },
+  {
+    path: 'crudproductos',
+    loadChildren: () => import('./paginas/crudproductos/crudproductos.module').then( m => m.CrudproductosPageModule)
+  },
   { path: 'products-list', component: ListadoInventarioComponent },
   { path: 'users-list', component: ListadoUsuariosComponent },
   { path: '', redirectTo: '/acceso', pathMatch: 'full' },

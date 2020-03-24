@@ -1,51 +1,42 @@
+<h1 class="titulo">Administracion de Usuarios</h1>
 
-<ion-header>
-  <ion-toolbar color="warning">
-    <ion-title class="titulo">Administracion de Usuarios</ion-title>
-  </ion-toolbar>
-</ion-header>
-
-
-<ion-content padding class="background">
+<div padding class="background">
   <div class="centrado carta">
-    <ion-item>
-      <ion-label position="floating">Usuario</ion-label>
-      <ion-select [(ngModel)]="ID">
-        <ion-select-option *ngFor="let codigoItem of dataUsuarios"> {{ codigoItem.ID }}</ion-select-option>
-      </ion-select>
-    </ion-item>
+    <div>
+      <label position="floating">Usuario</label>
+      <select [(ngModel)]="ID">
+        <option *ngFor="let codigoItem of dataUsuarios"> {{ codigoItem.ID }}</option>
+      </select>
+    </div>
     <button color="warning" (click)="getData()">Cargar Usuario</button>
     <br>
-    <ion-item>
-      <ion-label position="floating">Codigo de Usuario</ion-label>
-      <ion-input clear-input type="text" [(ngModel)]="data.ID"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label position="floating">Nombre de Usuario</ion-label>
-      <ion-input clear-input type="text" [(ngModel)]="data.NAME"></ion-input>
-    </ion-item>
+    <div>
+      <label position="floating">Codigo de Usuario</label>
+      <input clear-input type="text" [(ngModel)]="data.ID">
+    </div>
+    <div>
+      <label position="floating">Nombre de Usuario</label>
+      <input clear-input type="text" [(ngModel)]="data.NAME">
+    </div>
 
-    <ion-item>
-      <ion-label position="floating">Contraseña</ion-label>
-      <ion-input clear-input type="text" [(ngModel)]="data.PASSWORD"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label position="floating">Correo</ion-label>
-      <ion-input clear-input type="text" [(ngModel)]="data.EMAIL"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label position="floating">Tipo de Usuario</ion-label>
-      <ion-select [(ngModel)]="data.TYPE">
-        <ion-select-option>Administrador</ion-select-option>
-        <ion-select-option>Empleado</ion-select-option>
-      </ion-select>
-    </ion-item>
+    <div>
+      <label position="floating">Contraseña</label>
+      <input clear-input type="text" [(ngModel)]="data.PASSWORD">
+    </div>
+    <div>
+      <label position="floating">Correo</label>
+      <input clear-input type="text" [(ngModel)]="data.EMAIL">
+    </div>
+    <div>
+      <label position="floating">Tipo de Usuario</label>
+      <select [(ngModel)]="data.TYPE">
+        <option>Administrador</option>
+        <option>Empleado</option>
+      </select>
+    </div>
     <button color="warning" (click)="createUsuario()">Crear Usuario</button>
     <button color="warning" (click)="modifyUsuario()">Modificar Usuario</button>
     <button color="warning" (click)="deleteUsuario()" *ngIf="activo">Dar de Baja a Usuario</button>
     <button color="warning" (click)="reactivateUsuario()" *ngIf="!activo">Dar de Alta a Usuario</button>
-    <br>
-    <button color="warning" (click)="returnMenu()">Menu Principal</button>
-    <br>
   </div>
-</ion-content>
+</div>
