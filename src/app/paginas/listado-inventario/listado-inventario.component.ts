@@ -9,15 +9,21 @@ import { ListadoService } from 'src/app/servicios/listado.service';
 export class ListadoInventarioComponent implements OnInit {
 
   products: any = [];
+  error:boolean = false;
 
-  constructor(private service: ListadoService) { }
+  constructor(public service: ListadoService) { }
 
   ngOnInit(): void {
+    this.getProducts();
+  }
+
+  getProducts(){
     this.service.getProducts().subscribe(
       res => {
         this.products = res;
       },
       err => {
+        this.error = true;
         console.log(err)
       }
     )

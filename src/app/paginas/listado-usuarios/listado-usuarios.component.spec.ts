@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ListadoUsuariosComponent } from './listado-usuarios.component';
+import { HttpClientModule } from '@angular/common/http';
+import { throwError } from 'rxjs';
 
 describe('ListadoUsuariosComponent', () => {
   let component: ListadoUsuariosComponent;
@@ -8,6 +10,7 @@ describe('ListadoUsuariosComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [HttpClientModule],
       declarations: [ ListadoUsuariosComponent ]
     })
     .compileComponents();
@@ -21,5 +24,13 @@ describe('ListadoUsuariosComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  describe('When getUsers() is called', () => {
+    it('should handler error', () => {
+      spyOn(component.service,'getUsers').and.returnValue(throwError({error: 'Error'}));
+      component.getUsers();
+      expect(component.error).toBeTruthy();
+    })
   });
 });

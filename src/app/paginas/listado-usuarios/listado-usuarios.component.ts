@@ -9,15 +9,21 @@ import { ListadoService } from 'src/app/servicios/listado.service';
 export class ListadoUsuariosComponent implements OnInit {
 
   users: any = [];
+  error: boolean = false;
 
-  constructor(private service: ListadoService) { }
+  constructor(public service: ListadoService) { }
 
   ngOnInit(): void {
+    this.getUsers();
+  }
+
+  getUsers(){
     this.service.getUsers().subscribe(
       res => {
         this.users = res;
       },
       err => {
+        this.error = true;
         console.log(err)
       }
     )
