@@ -6,7 +6,7 @@ import { ApiService } from '../../servicios/api.service';
 
 
 @Component({
-  selector: 'app-crudusuarios',
+  selector: 'app-crudproductos',
   templateUrl: './crudproductos.page.html',
   styleUrls: ['./crudproductos.page.scss'],
 })
