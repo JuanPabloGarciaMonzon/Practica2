@@ -1,38 +1,34 @@
+<h1>Administracion de Producto</h1>
 
-<ion-header>
-  <ion-toolbar color="warning">
-    <ion-title class="titulo">Administracion de Producto</ion-title>
-  </ion-toolbar>
-</ion-header>
+<div padding class="background">
 
-
-<ion-content padding class="background">
   <div class="centrado carta">
-    <ion-item>
-      <ion-label position="floating">Producto</ion-label>
-      <ion-select [(ngModel)]="ID">
-        <ion-select-option *ngFor="let codigoItem of dataProductos"> {{ codigoItem.ID }}</ion-select-option>
-      </ion-select>
-    </ion-item>
-    <button color="warning" (click)="getData()">Cargar Producto</button>
-    <br>
-    <ion-item>
-      <ion-label position="floating">Codigo de Producto</ion-label>
-      <ion-input clear-input type="text" [(ngModel)]="datap.ID"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label position="floating">Nombre de producto</ion-label>
-      <ion-input clear-input type="text" [(ngModel)]="datap.NAME"></ion-input>
-    </ion-item>
+    <div>
+      <label position="floating">Producto</label>
+      <select [(ngModel)]="ID">
+        <option *ngFor="let codigoItem of dataProductos"> {{ codigoItem.ID }}</option>
+      </select>
+      <br> 
+      <button color="warning" (click)="getData()">Cargar Producto</button>
+    </div>
 
-    <ion-item>
-      <ion-label position="floating">Descripcion</ion-label>
-      <ion-input clear-input type="text" [(ngModel)]="datap.DESCRIPTION"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label position="floating">Precio</ion-label>
-      <ion-input clear-input type="text" [(ngModel)]="datap.PRICE"></ion-input>
-    </ion-item>
+    <div>
+      <label position="floating">Codigo de Producto</label>
+      <input clear-input type="text" [(ngModel)]="datap.ID">
+    </div>
+    <div>
+      <label position="floating">Nombre de producto</label>
+      <input clear-input type="text" [(ngModel)]="datap.NAME">
+    </div>
+
+    <div>
+      <label position="floating">Descripcion</label>
+      <input clear-input type="text" [(ngModel)]="datap.DESCRIPTION">
+    </div>
+    <div>
+      <label position="floating">Precio</label>
+      <input clear-input type="text" [(ngModel)]="datap.PRICE">
+    </div>
 
     <button color="warning" (click)="createProducto()">Crear producto</button>
     <button color="warning" (click)="modifyProducto()">Modificar producto</button>
@@ -42,4 +38,4 @@
     <button color="warning" (click)="returnMenu()">Menu Principal</button>
     <br>
   </div>
-</ion-content>
+</div>

@@ -19,16 +19,16 @@ export class CrudproductosPage implements OnInit {
   public error : Boolean;
 
   public ID =null;
-  public NAME =null;
-  public DESCRIPTION =null;
-  public PRICE =null;
+  // public NAME =null;
+  // public DESCRIPTION =null;
+  // public PRICE =null;
   constructor(private apiService : ApiService,private activeRoute: ActivatedRoute, public navCtrl: NavController) { this.datap = new Productos(); }
 
   ngOnInit() {
-    this.ID=this.activeRoute.snapshot.paramMap.get('ID');
-    this.NAME=this.activeRoute.snapshot.paramMap.get('NAME');
-    this.DESCRIPTION=this.activeRoute.snapshot.paramMap.get('DESCRIPTION');
-    this.PRICE=this.activeRoute.snapshot.paramMap.get('PRICE');
+    // this.ID=this.activeRoute.snapshot.paramMap.get('ID');
+    // this.NAME=this.activeRoute.snapshot.paramMap.get('NAME');
+    // this.DESCRIPTION=this.activeRoute.snapshot.paramMap.get('DESCRIPTION');
+    // this.PRICE=this.activeRoute.snapshot.paramMap.get('PRICE');
 
 
     this.loadProductos();
@@ -50,7 +50,7 @@ export class CrudproductosPage implements OnInit {
 
     this.popUpMensaje('Creando Producto');
     this.error = false;
-    this.checkFields("");
+    this.checkFields("");console.log(this.error);
     if(this.error == false){
 
       this.apiService.createItem(this.datap).subscribe();
