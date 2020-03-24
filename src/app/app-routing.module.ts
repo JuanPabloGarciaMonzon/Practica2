@@ -19,7 +19,10 @@ const routes: Routes = [
   //   path: 'crudusuarios/:id/:user/:type',
   //   loadChildren: () => import('./paginas/crudusuarios/crudusuarios.module').then( m => m.CrudusuariosPageModule)
   // },
-  { path: 'crudproductos', component: CrudproductosPage},
+   {
+     path: 'crudproductos',
+     loadChildren: () => import('./paginas/crudproductos/crudproductos.module').then( m => m.CrudproductosPageModule)
+   },
   { path: 'admin-usuarios', component: AdminUsuariosComponent },
   { path: 'admin-productos/:id/:user/:type', component: AdminProductosComponent },
   { path: 'products-list', component: ListadoInventarioComponent },
