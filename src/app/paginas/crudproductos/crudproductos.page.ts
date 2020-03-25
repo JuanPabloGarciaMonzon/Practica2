@@ -6,7 +6,7 @@ import { ApiService } from '../../servicios/api.service';
 
 
 @Component({
-  selector: 'app-crudusuarios',
+  selector: 'app-crudproductos',
   templateUrl: './crudproductos.page.html',
   styleUrls: ['./crudproductos.page.scss'],
 })
@@ -38,13 +38,18 @@ export class CrudproductosPage implements OnInit {
 
   loadProductos(){
 
-      this.apiService.getAll().subscribe( response => {
+    this.apiService.getAllproducts().subscribe( response => {
       this.dataProductos = response;
+
     })
   }
 
   getData(){
+    this.apiService.getproduct(this.ID).subscribe( response => {
 
+        this.datap= response;
+
+    });
 
   }
 
