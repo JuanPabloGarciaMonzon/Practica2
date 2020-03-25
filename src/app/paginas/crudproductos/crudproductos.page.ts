@@ -38,13 +38,18 @@ export class CrudproductosPage implements OnInit {
 
   loadProductos(){
 
-      this.apiService.getAll().subscribe( response => {
+    this.apiService.getAllproducts().subscribe( response => {
       this.dataProductos = response;
+
     })
   }
 
   getData(){
+    this.apiService.getproduct(this.ID).subscribe( response => {
 
+        this.datap= response;
+
+    });
 
   }
 
