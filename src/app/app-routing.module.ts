@@ -4,10 +4,12 @@ import { ListadoInventarioComponent } from './paginas/listado-inventario/listado
 import { ListadoUsuariosComponent } from './paginas/listado-usuarios/listado-usuarios.component';
 import { HomeComponent } from './paginas/home/home.component';
 import { AccesoComponent } from './paginas/acceso/acceso.component';
+import { HomeAdminComponent } from './paginas/home-admin/home-admin.component';
 
 const routes: Routes = [
   { path: 'acceso', component: AccesoComponent },
-  { path: 'home/:tipo', component: HomeComponent },
+  { path: 'home', component: HomeComponent },
+  { path: 'home-admin', component: HomeAdminComponent },
   {
     path: 'crudusuarios',
     loadChildren: () => import('./paginas/crudusuarios/crudusuarios.module').then( m => m.CrudusuariosPageModule)

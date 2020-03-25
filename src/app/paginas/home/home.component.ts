@@ -8,12 +8,9 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private activeRoute:ActivatedRoute) { }
+  constructor() { }
 
-  public TYPE =null;
   ngOnInit(): void {
-    this.TYPE= this.activeRoute.snapshot.paramMap.get('TYPE');
-
   }
 
 }

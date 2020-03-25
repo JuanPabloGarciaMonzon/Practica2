@@ -16,13 +16,14 @@ import { ListadoInventarioComponent } from './paginas/listado-inventario/listado
 import { ListadoService } from './servicios/listado.service';
 import { HomeComponent } from './paginas/home/home.component';
 import { AccesoComponent } from './paginas/acceso/acceso.component';
+import { HomeAdminComponent } from './paginas/home-admin/home-admin.component';
 
 @NgModule({
   declarations: [
     AppComponent, 
     ListadoUsuariosComponent, 
     ListadoInventarioComponent, 
-    HomeComponent, AccesoComponent
+    HomeComponent, AccesoComponent, HomeAdminComponent
   ],
   entryComponents: [],
   imports: [

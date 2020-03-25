@@ -11,7 +11,7 @@ import { Usuarios } from 'src/app/modelos/usuarios';
 })
 export class AccesoComponent implements OnInit {
 
-  constructor(private router:Router, private serv:EmpresaServicesService) { }
+  constructor(private router:Router, public serv:EmpresaServicesService) { }
 
   public username:String;
   public password:String;
@@ -31,7 +31,11 @@ export class AccesoComponent implements OnInit {
 
       for (let key in element) {
         if(element[key].PASSWORD == this.password){ 
-          this.router.navigate(['/home',element[key].TYPE]);
+          let type = element[key].TYPE;
+          if(type == 1)
+            this.router.navigate(['/home-admin']);
+          else
+            this.router.navigate(['/home']);
         }          
         else{
           this.error ="Contraseña o Usuario incorrecta";
